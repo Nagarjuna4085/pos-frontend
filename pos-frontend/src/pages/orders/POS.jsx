@@ -157,12 +157,6 @@ const POS = () => {
                 <h3 className="font-semibold mt-2">{p.name}</h3>
 
                 <p>${p.price}</p>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => addToCart(p)}
-                >
-                  Add
-                </button>
               </div>
             ))}
           </div>
