@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
 import MainLayout from "../../layouts/MainLayout";
-
+import AddProductModal from "./AddProductModal";
 import { getProductsApi, deleteProductApi } from "./productApi";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-
+  const [open, setOpen] = useState(false);
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
   const getProducts = async () => {
     try {
       const data = await getProductsApi();
@@ -18,7 +19,11 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getProducts();
+    const fetchProducts = async () => {
+      await getProducts();
+    };
+
+    fetchProducts();
   }, []);
 
   const handleDelete = async (id) => {
@@ -36,7 +41,10 @@ const Products = () => {
       <div className="flex items-center justify-between mb-5">
         <h1 className="text-3xl font-bold">Products</h1>
 
-        <button className="bg-slate-900 text-white px-4 py-2 rounded">
+        <button
+          className="bg-slate-900 text-white px-4 py-2 rounded"
+          onClick={() => setOpen(true)}
+        >
           Add Product
         </button>
       </div>
@@ -51,7 +59,7 @@ const Products = () => {
 
               <th className="text-left p-4">Price</th>
 
-              <th className="text-left p-4">Stock</th>
+              <th className="text-left p-4">quantity</th>
 
               <th className="text-left p-4">Actions</th>
             </tr>
@@ -62,7 +70,7 @@ const Products = () => {
               <tr key={product.id} className="border-t">
                 <td className="p-4">
                   <img
-                    src={product.image}
+                    src={`${baseURL}${product.imageUrl}`}
                     alt=""
                     className="w-14 h-14 object-cover rounded"
                   />
@@ -72,7 +80,7 @@ const Products = () => {
 
                 <td className="p-4">${product.price}</td>
 
-                <td className="p-4">{product.stock}</td>
+                <td className="p-4">{product.quantity}</td>
 
                 <td className="p-4 space-x-2">
                   <button className="bg-blue-500 text-white px-3 py-1 rounded">
@@ -91,6 +99,12 @@ const Products = () => {
           </tbody>
         </table>
       </div>
+
+      <AddProductModal
+        open={open}
+        setOpen={setOpen}
+        getProducts={getProducts}
+      />
     </MainLayout>
   );
 };
