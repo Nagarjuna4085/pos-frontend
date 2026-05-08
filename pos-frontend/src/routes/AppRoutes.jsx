@@ -7,7 +7,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Products from "../pages/products/Products";
 
 import ProtectedRoute from "./ProtectedRoute";
-
+import Categories from "../pages/categories/Categories";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -28,6 +28,15 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Products />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <Categories />
             </ProtectedRoute>
           }
         />

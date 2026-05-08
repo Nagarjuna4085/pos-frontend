@@ -30,6 +30,8 @@ const Login = () => {
       setLoading(true);
 
       const data = await loginApi(formData);
+      console.log("data", data.token);
+      localStorage.setItem("token", data.token);
 
       login(data);
 
