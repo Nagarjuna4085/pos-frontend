@@ -8,6 +8,9 @@ import Products from "../pages/products/Products";
 
 import ProtectedRoute from "./ProtectedRoute";
 import Categories from "../pages/categories/Categories";
+import Inventory from "../pages/inventory/Inventory";
+import POS from "../pages/orders/POS";
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -19,6 +22,15 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/pos"
+          element={
+            <ProtectedRoute>
+              <POS />
             </ProtectedRoute>
           }
         />
@@ -37,6 +49,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Categories />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/inventory"
+          element={
+            <ProtectedRoute>
+              <Inventory />
             </ProtectedRoute>
           }
         />

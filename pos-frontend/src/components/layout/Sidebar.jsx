@@ -18,6 +18,12 @@ const Sidebar = () => {
               Dashboard
             </Link>
           </li>
+          {/* pos */}
+          <li>
+            <Link to="/pos" className="hover:text-blue-400 block py-1">
+              POS
+            </Link>
+          </li>
           <li>
             <Link to="/products" className="hover:text-blue-400 block py-1">
               Products
@@ -27,6 +33,12 @@ const Sidebar = () => {
           <li>
             <Link to="/categories" className="hover:text-blue-400 block py-1">
               Categories
+            </Link>
+          </li>
+          {/* Inventory */}
+          <li>
+            <Link to="/inventory" className="hover:text-blue-400 block py-1">
+              Inventory
             </Link>
           </li>
           <li>
