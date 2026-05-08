@@ -110,8 +110,8 @@ const AddProductModal = ({ open, setOpen, getProducts }) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50  flex items-center justify-center">
-      <div className="bg-white p-6 rounded w-[500px]">
+    <div className="fixed inset-0 bg-black/50 max-h-[100vh]  p-6  flex items-center justify-center">
+      <div className="bg-white p-6 rounded w-[500px] h-screen overflow-y-auto">
         <div className="flex justify-between mb-5">
           <h2 className="text-2xl font-bold">Add Product</h2>
           <button onClick={() => setOpen(false)}>X</button>
