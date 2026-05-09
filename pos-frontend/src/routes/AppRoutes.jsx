@@ -76,9 +76,9 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
 
         <Route
-          path="/register"
+          path="/staff/register"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <Register />
             </ProtectedRoute>
           }

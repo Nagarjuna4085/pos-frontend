@@ -36,6 +36,14 @@ const Sidebar = () => {
                 Inventory
               </Link>
             </li>
+            <li>
+              <Link
+                to="/staff/register"
+                className="hover:text-blue-400 block py-1"
+              >
+                Register Staff
+              </Link>
+            </li>
           </ul>
         )}
 
@@ -52,11 +60,11 @@ const Sidebar = () => {
               Orders
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/customers" className="hover:text-blue-400 block py-1">
               Customers
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
 
