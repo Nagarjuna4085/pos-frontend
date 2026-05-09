@@ -10,6 +10,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import Categories from "../pages/categories/Categories";
 import Inventory from "../pages/inventory/Inventory";
 import POS from "../pages/orders/POS";
+import Orders from "../pages/orders/Orders";
+import Register from "../pages/auth/Register";
 
 const AppRoutes = () => {
   return (
@@ -57,6 +59,22 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Inventory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <Orders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <ProtectedRoute>
+              <Register />
             </ProtectedRoute>
           }
         />
