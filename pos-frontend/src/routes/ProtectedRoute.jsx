@@ -1,16 +1,23 @@
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
 
-import authStore from "../store/authStore"
+import authStore from "../store/authStore";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, allowedRoles }) => {
+  const token = authStore((state) => state.token);
 
-  const token = authStore((state) => state.token)
+  const user = authStore((state) => state.user);
 
+  // NOT LOGGED IN
   if (!token) {
-    return <Navigate to="/login" />
+    return <Navigate to="/login" />;
   }
 
-  return children
-}
+  // ROLE CHECK
+  if (allowedRoles && !allowedRoles.includes(user?.role)) {
+    return <Navigate to="/" />;
+  }
 
-export default ProtectedRoute
+  return children;
+};
+
+export default ProtectedRoute;

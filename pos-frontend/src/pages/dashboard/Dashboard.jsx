@@ -22,7 +22,7 @@ const Dashboard = () => {
     loadDashboard();
   }, []);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <MainLayout>Loading...</MainLayout>;
 
   return (
     <MainLayout>

@@ -10,7 +10,13 @@ const authStore = create(
       login: (data) => {
         set({
           token: data.token,
-          user: data.user,
+
+          // support both structures
+          user: data.user || {
+            role: data.role,
+            email: data.email,
+            username: data.username,
+          },
         });
       },
 
@@ -19,11 +25,12 @@ const authStore = create(
           token: null,
           user: null,
         });
-        localStorage.clear(); // Safety clear
+
+        localStorage.clear();
       },
     }),
     {
-      name: "auth-storage", // Unique name for the item in localStorage
+      name: "auth-storage",
     },
   ),
 );

@@ -9,38 +9,44 @@ const Sidebar = () => {
   return (
     <div className="w-64 h-screen bg-slate-900 text-white p-5 flex flex-col">
       {/* Top Section */}
-      <div className="flex-1">
+      <div className="flex-1 space-y-4">
         <h1 className="text-2xl font-bold mb-10 text-blue-400">POS SYSTEM</h1>
 
+        {user?.role === "ADMIN" && (
+          <ul className="space-y-4">
+            <li>
+              <Link to="/" className="hover:text-blue-400 block py-1">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link to="/products" className="hover:text-blue-400 block py-1">
+                Products
+              </Link>
+            </li>
+            {/* categories */}
+            <li>
+              <Link to="/categories" className="hover:text-blue-400 block py-1">
+                Categories
+              </Link>
+            </li>
+            {/* Inventory */}
+            <li>
+              <Link to="/inventory" className="hover:text-blue-400 block py-1">
+                Inventory
+              </Link>
+            </li>
+          </ul>
+        )}
+
         <ul className="space-y-4">
-          <li>
-            <Link to="/" className="hover:text-blue-400 block py-1">
-              Dashboard
-            </Link>
-          </li>
           {/* pos */}
           <li>
             <Link to="/pos" className="hover:text-blue-400 block py-1">
               POS
             </Link>
           </li>
-          <li>
-            <Link to="/products" className="hover:text-blue-400 block py-1">
-              Products
-            </Link>
-          </li>
-          {/* categories */}
-          <li>
-            <Link to="/categories" className="hover:text-blue-400 block py-1">
-              Categories
-            </Link>
-          </li>
-          {/* Inventory */}
-          <li>
-            <Link to="/inventory" className="hover:text-blue-400 block py-1">
-              Inventory
-            </Link>
-          </li>
+
           <li>
             <Link to="/orders" className="hover:text-blue-400 block py-1">
               Orders

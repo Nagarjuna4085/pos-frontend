@@ -11,36 +11,18 @@ import Categories from "../pages/categories/Categories";
 import Inventory from "../pages/inventory/Inventory";
 import POS from "../pages/orders/POS";
 import Orders from "../pages/orders/Orders";
+import HomeRedirect from "../pages/auth/HomeRedirect";
 import Register from "../pages/auth/Register";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/pos"
-          element={
-            <ProtectedRoute>
-              <POS />
-            </ProtectedRoute>
-          }
-        />
-
+        <Route path="/" element={<HomeRedirect />} />
         <Route
           path="/products"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <Products />
             </ProtectedRoute>
           }
@@ -49,27 +31,50 @@ const AppRoutes = () => {
         <Route
           path="/categories"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <Categories />
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/inventory"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <Inventory />
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/orders"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN", "CASHIER"]}>
               <Orders />
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/pos"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN", "CASHIER"]}>
+              <POS />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/login" element={<Login />} />
+
         <Route
           path="/register"
           element={
