@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { loginApi } from "./authApi";
 import authStore from "../../store/authStore";
-
+import toast from "react-hot-toast";
 const Login = () => {
   const navigate = useNavigate();
 
@@ -34,10 +34,12 @@ const Login = () => {
       localStorage.setItem("token", data.token);
 
       login(data);
+      toast.success("logged in successfully");
 
       navigate("/");
     } catch (error) {
       console.log(error);
+      toast.error("Invalid credentials");
 
       alert("Invalid Credentials");
     } finally {
